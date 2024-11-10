@@ -1,17 +1,17 @@
-package abhik26.food_delivery.restaurant_listing.dto;
+package abhik26.food_delivery.user_info.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class RestaurantDto {
+@AllArgsConstructor
+public class UserDto {
 
     private Integer id;
     private String name;
+    private String password;
     private String address;
     private String city;
-    private String description;
 }

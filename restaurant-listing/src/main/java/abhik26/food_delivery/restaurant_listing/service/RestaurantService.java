@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import abhik26.food_delivery.restaurant_listing.dto.RestaurantDTO;
+import abhik26.food_delivery.restaurant_listing.dto.RestaurantDto;
 import abhik26.food_delivery.restaurant_listing.entity.Restaurant;
 import abhik26.food_delivery.restaurant_listing.mapper.RestaurantMapper;
 import abhik26.food_delivery.restaurant_listing.repo.RestaurantRepository;
@@ -20,29 +20,29 @@ public class RestaurantService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public List<RestaurantDTO> getAllRestaurants() {
+    public List<RestaurantDto> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
 
-        List<RestaurantDTO> restaurantDTOs = restaurants.stream()
-                .map(restaurant -> RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDTO(restaurant))
+        List<RestaurantDto> restaurantDTOs = restaurants.stream()
+                .map(restaurant -> RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDto(restaurant))
                 .collect(Collectors.toList());
 
         return restaurantDTOs;
     }
 
-    public RestaurantDTO addRestaurant(RestaurantDTO restaurantToAdd) {
+    public RestaurantDto addRestaurant(RestaurantDto restaurantToAdd) {
         Restaurant savedRestaurant = restaurantRepository
-                .save(RestaurantMapper.INSTANCE.mapRestaurantDTOToRestaurant(restaurantToAdd));
-        RestaurantDTO restaurantDTO = RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDTO(savedRestaurant);
+                .save(RestaurantMapper.INSTANCE.mapRestaurantDtoToRestaurant(restaurantToAdd));
+        RestaurantDto restaurantDTO = RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDto(savedRestaurant);
         return restaurantDTO;
     }
 
-    public RestaurantDTO getRestaurantById(Integer id) {
+    public RestaurantDto getRestaurantById(Integer id) {
         Optional<Restaurant> restaurantOptional = restaurantRepository.findById(id);
-        RestaurantDTO restaurantDTO = null;
+        RestaurantDto restaurantDTO = null;
 
         if (restaurantOptional.isPresent()) {
-            restaurantDTO = RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDTO(restaurantOptional.get());
+            restaurantDTO = RestaurantMapper.INSTANCE.mapRestaurantToRestaurantDto(restaurantOptional.get());
         }
 
         return restaurantDTO;

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import abhik26.food_delivery.restaurant_listing.dto.RestaurantDTO;
+import abhik26.food_delivery.restaurant_listing.dto.RestaurantDto;
 import abhik26.food_delivery.restaurant_listing.service.RestaurantService;
 
 @RestController
@@ -25,26 +25,25 @@ public class RestaurantController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RestaurantDTO>> getAllRestaurants() {
-        List<RestaurantDTO> restaurantDTOs = restaurantService.getAllRestaurants();
-        ResponseEntity<List<RestaurantDTO>> response = new ResponseEntity<List<RestaurantDTO>>(restaurantDTOs,
+    public ResponseEntity<List<RestaurantDto>> getAllRestaurants() {
+        List<RestaurantDto> restaurantDTOs = restaurantService.getAllRestaurants();
+        ResponseEntity<List<RestaurantDto>> response = new ResponseEntity<List<RestaurantDto>>(restaurantDTOs,
                 HttpStatus.OK);
         return response;
     }
 
     @PostMapping
-    public ResponseEntity<RestaurantDTO> addRestarurant(@RequestBody RestaurantDTO restaurantToAdd) {
-        System.out.println(restaurantToAdd.toString());
-        RestaurantDTO addedRestaurant = restaurantService.addRestaurant(restaurantToAdd);
-        return new ResponseEntity<RestaurantDTO>(addedRestaurant, HttpStatus.CREATED);
+    public ResponseEntity<RestaurantDto> addRestarurant(@RequestBody RestaurantDto restaurantToAdd) {
+        RestaurantDto addedRestaurant = restaurantService.addRestaurant(restaurantToAdd);
+        return new ResponseEntity<RestaurantDto>(addedRestaurant, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RestaurantDTO> getRestaurantById(@PathVariable Integer id) {
-        RestaurantDTO restaurantById = restaurantService.getRestaurantById(id);
+    public ResponseEntity<RestaurantDto> getRestaurantById(@PathVariable Integer id) {
+        RestaurantDto restaurantById = restaurantService.getRestaurantById(id);
         
         if (restaurantById != null) {
-            return new ResponseEntity<RestaurantDTO>(restaurantById, HttpStatus.OK);
+            return new ResponseEntity<RestaurantDto>(restaurantById, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }

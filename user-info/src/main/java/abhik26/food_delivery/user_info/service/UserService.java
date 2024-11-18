@@ -26,7 +26,7 @@ public class UserService {
         return addedUserDto;
     }
 
-    public List<UserDto> getAddUsers() {
+    public List<UserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
         return users.stream().map(user -> UserMapper.INSTANCE.mapUserToUserDto(user)).collect(Collectors.toList());
     }

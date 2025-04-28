@@ -9,7 +9,8 @@ import { RestaurantListingComponent } from './components/restaurant-listing/rest
 import { FoodCatalogueComponent } from './components/food-catalogue/food-catalogue.component';
 
 const routes: Routes = [
-	{ path: '', component: RestaurantListingComponent, pathMatch: 'full' }
+	{ path: '', component: RestaurantListingComponent, pathMatch: 'full' },
+	{ path: 'food-catalogue/:id', component: FoodCatalogueComponent, pathMatch: 'full' }
 ];
 
 @NgModule({

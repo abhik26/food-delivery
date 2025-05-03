@@ -59,7 +59,7 @@ export class FoodCatalogueComponent implements OnInit {
 			restaurant: this.foodCatalogue.restaurant
 		}
 
-		this.router.navigate(['/order'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
+		this.router.navigate(['/order-summary'], { queryParams: { data: JSON.stringify(this.orderSummary) } });
 	}
 
 }

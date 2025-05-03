@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrl: '',
   restaurantsApiUrl: 'http://localhost:9091/restaurants',
-  foodCataloguesApiUrl: 'http://localhost:9093/food-catalogues'
+  foodCataloguesApiUrl: 'http://localhost:9093/food-catalogues',
+  orderApiUrl: 'http://localhost:9094/orders'
 };
 
 /*

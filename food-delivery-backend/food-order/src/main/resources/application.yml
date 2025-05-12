@@ -1,17 +1,6 @@
 server:
-  port: 9094
-
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
+    port: 9094
 
 spring:
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/food_delivery_food_order
-      host: localhot
-      port: 27017
-      database: food_delivery_food_order
-      repositories:
-        enabled: true
+    profiles:
+        active: dev

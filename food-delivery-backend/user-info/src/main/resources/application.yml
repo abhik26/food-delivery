@@ -1,23 +1,17 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/food_delivery.user_info
-    username: postgres
-    password: postgres
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    generate-ddl: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      show-sql: true
-      hibernate:
-        globally_quoted_identifiers: true
+    profiles:
+        active: dev
+    datasource:
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+        properties:
+            show-sql: true
+            hibernate:
+                globally_quoted_identifiers: true
 
 server:
-  port: 9092
-
-eureka:
-  client:
-    service-url:
-      default-zone: http://localhost:8761/eureka
+    port: 9092
